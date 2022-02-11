@@ -40,6 +40,7 @@ if __name__ == '__main__':
     GOOGLE_DOCUMENT_OUT = '18CSD7sNaJWQ4DDOv6omd0J2jSYuT7xjlKCyAxSdz-QQ'
     GOOGLE_DOCUMENT_IN = '1LRE5onYv7TB6XIQhlUiAuOVrul-c8jvP3l8OKQx_CkA'
     LIST_NAME = '/mebel'
+    MAX_COUNT_OF_LINKS = 1000       # 0 - no limit
 
     stop_words = ['купить', 'отзывы', 'бесплатно', 'спб', 'форум']
     inclusion_words = ['стоимость', 'цена', 'прайс', 'заказать', 'заказ', 'стоит', 'цены', 'на дом', 'на час', 'услуги']
@@ -79,7 +80,9 @@ if __name__ == '__main__':
                                                   'A2', 'G'+str(googleService.get_list_size(GOOGLE_DOCUMENT_IN,
                                                                                             LIST_NAME)[1]), 'COLUMNS')
 
-    #raw_data[0] = raw_data[0][:500]
+    if MAX_COUNT_OF_LINKS != 0 and len(raw_data[0]) > MAX_COUNT_OF_LINKS:
+        raw_data[0] = raw_data[0][:MAX_COUNT_OF_LINKS]
+
     # service.urls = raw_data[0]
     for url in raw_data[0]:
         url = url.replace('https://', '')
