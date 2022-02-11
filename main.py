@@ -76,7 +76,9 @@ if __name__ == '__main__':
 
     raw_data = googleService.get_data_from_sheets(GOOGLE_DOCUMENT_IN,
                                                   LIST_NAME,
-                                                  'A2', 'G689', 'COLUMNS')
+                                                  'A2', 'G'+str(googleService.get_list_size(GOOGLE_DOCUMENT_IN,
+                                                                                            LIST_NAME)[1]), 'COLUMNS')
+
     #raw_data[0] = raw_data[0][:500]
     # service.urls = raw_data[0]
     for url in raw_data[0]:
