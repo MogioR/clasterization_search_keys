@@ -39,7 +39,7 @@ if __name__ == '__main__':
     CLUSTERING_LEVEL = 1
     GOOGLE_DOCUMENT_OUT = '18CSD7sNaJWQ4DDOv6omd0J2jSYuT7xjlKCyAxSdz-QQ'
     GOOGLE_DOCUMENT_IN = '1LRE5onYv7TB6XIQhlUiAuOVrul-c8jvP3l8OKQx_CkA'
-    LIST_NAME = '/mebel'
+    LIST_NAME = '/remont-tehniki2'
     MAX_COUNT_OF_LINKS = 1000       # 0 - no limit
 
     stop_words = ['купить', 'отзывы', 'бесплатно', 'спб', 'форум']
@@ -98,15 +98,15 @@ if __name__ == '__main__':
     old_anchors = set()
     geo_fiches = GeoFiches(NatashaTokenizer())
     for i in range(len(raw_data[0])):
-        if len(raw_data[6]) > i and len(raw_data[6][i]) > 0:
+        if len(raw_data) > 6 and len(raw_data[6]) > i and len(raw_data[6][i]) > 0:
             buf = str(raw_data[6][i]).split(',')
             for b in buf:
                 old_anchors.add(geo_fiches.lemma_of_query(b))
 
-        if len(raw_data[5]) > i and len(raw_data[5][i]) > 0:
+        if len(raw_data) > 5 and len(raw_data[5]) > i and len(raw_data[5][i]) > 0:
             main_names.append(raw_data[1][i])
             clear_mains.add(geo_fiches.clear_extract_geo(raw_data[5][i]))
-        else:
+        elif len(raw_data) > 4:
             geo_names.append(raw_data[1][i])
             clear_geos.add(geo_fiches.clear_extract_geo(raw_data[4][i]))
 
