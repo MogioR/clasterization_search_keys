@@ -37,7 +37,7 @@ if __name__ == '__main__':
     SEARCH_ENGINE = 'GOOGLE'
     DOMAIN = 'brest.kuku.by'
     CLUSTERING_LEVEL = 1
-    GOOGLE_DOCUMENT_OUT = '18CSD7sNaJWQ4DDOv6omd0J2jSYuT7xjlKCyAxSdz-QQ'
+    GOOGLE_DOCUMENT_OUT = '1LRE5onYv7TB6XIQhlUiAuOVrul-c8jvP3l8OKQx_CkA'
     GOOGLE_DOCUMENT_IN = '1LRE5onYv7TB6XIQhlUiAuOVrul-c8jvP3l8OKQx_CkA'
     LIST_NAME = '/remont-tehniki2'
     MAX_COUNT_OF_LINKS = 1000       # 0 - no limit
@@ -131,8 +131,8 @@ if __name__ == '__main__':
     clusters_six = service.make_clusters(0.6)
     print('Make reports')
 
-    service.make_report_to_sheets(clusters_anchors, GOOGLE_DOCUMENT_IN, LIST_NAME+'_clusters_anchors', True)
-    service.make_report_to_sheets(clusters_six, GOOGLE_DOCUMENT_IN, LIST_NAME+'_clusters_six', False)
+    service.make_report_to_sheets(clusters_anchors, GOOGLE_DOCUMENT_OUT, LIST_NAME+'_clusters_anchors', True)
+    service.make_report_to_sheets(clusters_six, GOOGLE_DOCUMENT_OUT, LIST_NAME+'_clusters_six', False)
 
     with open(LIST_NAME+'_del.json', "w", encoding='utf-8') as write_file:
         json.dump(service.deleted, write_file, ensure_ascii=False, indent=4)
