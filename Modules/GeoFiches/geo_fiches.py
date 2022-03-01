@@ -36,7 +36,7 @@ class GeoFiches:
         for word in words:
             if self.tokenizer.lemma(word) not in clear_geos:
                 new_query.append(word)
-            elif new_query[-1] in PREFIXES_LEMMA_WITHOUT_SPACES:
+            elif len(new_query) > 0 and new_query[-1] in PREFIXES_LEMMA_WITHOUT_SPACES:
                 new_query = new_query[0:len(new_query) - 1]
 
         return ' '.join(new_query)
